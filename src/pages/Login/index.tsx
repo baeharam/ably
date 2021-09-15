@@ -43,7 +43,7 @@ const Login = (): React.ReactElement => {
 
   useEffect(() => {
     if (!isNullish(accessToken)) {
-      history.push("/member-info", { accessToken });
+      history.push("/user", { accessToken });
     }
   }, [accessToken, history]);
 

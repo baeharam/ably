@@ -1,0 +1,25 @@
+.user {
+  display: flex;
+  width: 600px;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  height: 200px;
+  background-color: purple;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.logout {
+  background-color: green;
+  color: white;
+  padding: 20px;
+  border-radius: 3px;
+}
