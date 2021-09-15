@@ -38,7 +38,7 @@ const User = (): React.ReactElement => {
     if (isSuccess) {
       history.replace("/login");
     }
-  }, [isSuccess]);
+  }, [isSuccess, history]);
 
   if (error) {
     history.goBack();
