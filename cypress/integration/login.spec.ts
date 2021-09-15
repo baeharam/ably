@@ -1,6 +1,8 @@
+import { DummyData } from "../constants";
+
 const inputInfoAndLogin = (): void => {
-  cy.getTestData("아이디").type("ably452@dummy.com");
-  cy.getTestData("비밀번호").type("!abc321#$");
+  cy.getTestData("아이디").type(DummyData.email);
+  cy.getTestData("비밀번호").type(DummyData.password);
   cy.getTestData("로그인").click();
 }
 

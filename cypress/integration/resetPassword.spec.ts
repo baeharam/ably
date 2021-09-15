@@ -1,12 +1,13 @@
+import { DummyData } from "../constants";
 
 const testMovingToVerification = (): void => {
-  cy.getTestData("이메일").type("ably452@dummy.com");
+  cy.getTestData("이메일").type(DummyData.email);
   cy.getTestData("다음").click();
   cy.url().should("eq", Cypress.config().baseUrl + "/reset-password/verify-authcode");
 }
 
 const testMovingToChangePassword = (): void => {
-  cy.getTestData("인증 코드").type("171009");
+  cy.getTestData("인증 코드").type(DummyData.authCode);
   cy.getTestData("다음").click();
   cy.url().should("eq", Cypress.config().baseUrl + "/reset-password/change-password");
 }
@@ -28,8 +29,8 @@ describe("비밀번호 재설정 테스트", function() {
   it("비밀번호 변경 성공하면 메시지가 나와야 함", function() {
     testMovingToVerification();
     testMovingToChangePassword();
-    cy.getTestData("새로운 비밀번호").type("!abc321#$");
-    cy.getTestData("새로운 비밀번호 확인").type("!abc321#$");
+    cy.getTestData("새로운 비밀번호").type(DummyData.password);
+    cy.getTestData("새로운 비밀번호 확인").type(DummyData.password);
     cy.getTestData("비밀번호 변경하기").click();
     cy.getTestData("성공 메시지").should("be.visible");
   })
