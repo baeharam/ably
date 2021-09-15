@@ -8,9 +8,17 @@ const ResetPassword = (): React.ReactElement => {
 
   return (
     <Switch>
-      <Route exact path={path} component={IssueAuthCode} />
-      <Route exact path={`${path}verify-authcode`} component={VerifyAuthCode} />
-      <Route exact path={`${path}change-password`} component={ChangePassword} />
+      <Route exact path={`${path}`} component={IssueAuthCode} />
+      <Route
+        exact
+        path={`${path}/verify-authcode`}
+        component={VerifyAuthCode}
+      />
+      <Route
+        exact
+        path={`${path}/change-password`}
+        component={ChangePassword}
+      />
     </Switch>
   );
 };

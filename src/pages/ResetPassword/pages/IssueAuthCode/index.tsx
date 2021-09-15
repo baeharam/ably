@@ -28,7 +28,7 @@ const IssueAuthCode = (): React.ReactElement => {
 
   useEffect(() => {
     if (data != null) {
-      history.push("/verify-authcode", {
+      history.push("./reset-password/verify-authcode", {
         ...data.data,
         email,
       });

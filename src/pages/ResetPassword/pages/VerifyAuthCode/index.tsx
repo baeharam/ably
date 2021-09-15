@@ -58,7 +58,7 @@ const VerifyAuthCode = (): React.ReactElement => {
 
   useEffect(() => {
     if (!isNullish(confirmToken)) {
-      history.push("/change-password", {
+      history.push("/reset-password/change-password", {
         email,
         confirmToken,
       });
