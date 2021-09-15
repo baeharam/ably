@@ -1,5 +1,5 @@
 import { ApiSuffix } from "@constants";
-import { isNullish, Nullable } from "@types";
+import { FetchError, isNullish, Nullable } from "@types";
 import { fetcher } from "@utils/request";
 import { AxiosResponse } from "axios";
 import React, { useEffect, useState } from "react";
@@ -14,9 +14,9 @@ const Login = (): React.ReactElement => {
   const [accessToken, setAccessToken] = useState<Nullable<string>>();
 
   const history = useHistory();
-  const { mutateAsync } = useMutation<
+  const { mutateAsync, error } = useMutation<
     AxiosResponse<LoginResponse>,
-    unknown,
+    FetchError,
     LoginRequest
   >((loginInfo) => fetcher.post(ApiSuffix.LOGIN, loginInfo));
 
@@ -70,6 +70,7 @@ const Login = (): React.ReactElement => {
       <button className={style["password-reset-button"]} type="button">
         <Link to="/reset-password">비밀번호 재설정</Link>
       </button>
+      {error && <p>{error.message}</p>}
     </>
   );
 };

@@ -1,5 +1,5 @@
 import { ApiSuffix } from "@constants";
-import { isNullish } from "@types";
+import { FetchError, isNullish } from "@types";
 import { fetcher } from "@utils/request";
 import { AxiosResponse } from "axios";
 import { useEffect } from "react";
@@ -11,16 +11,22 @@ import style from "./User.module.scss";
 const User = (): React.ReactElement => {
   const history = useHistory();
   const { state } = useLocation<InfoToReadUser>();
-  const { data, error, isLoading } = useQuery<AxiosResponse<UserResponse>>(
-    "user",
-    () =>
-      fetcher.get(ApiSuffix.USER, {
-        headers: {
-          Authorization: `Bearer ${state.accessToken}`,
-        },
-      })
+  const {
+    data,
+    error: userInfoError,
+    isLoading,
+  } = useQuery<AxiosResponse<UserResponse>, FetchError>("user", () =>
+    fetcher.get(ApiSuffix.USER, {
+      headers: {
+        Authorization: `Bearer ${state.accessToken}`,
+      },
+    })
   );
-  const { mutate, isSuccess, isError } = useMutation(() =>
+  const {
+    mutate,
+    isSuccess,
+    error: logoutError,
+  } = useMutation<unknown, FetchError>(() =>
     fetcher.post(ApiSuffix.LOGOUT, null, {
       headers: {
         Authorization: `Bearer ${state.accessToken}`,
@@ -40,7 +46,7 @@ const User = (): React.ReactElement => {
     }
   }, [isSuccess, history]);
 
-  if (error) {
+  if (!isNullish(userInfoError)) {
     history.goBack();
   }
 
@@ -58,7 +64,7 @@ const User = (): React.ReactElement => {
       <button onClick={handleLogout} className={style.logout} type="button">
         로그아웃
       </button>
-      {isError && <p>로그아웃에 실패했습니다.</p>}
+      {logoutError && <p>{logoutError.message}</p>}
     </>
   );
 };

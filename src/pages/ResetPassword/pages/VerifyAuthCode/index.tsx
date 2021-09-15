@@ -3,7 +3,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { useMutation } from "react-query";
 import { fetcher } from "@utils/request";
 import dayjs from "dayjs";
-import { isNullish, Nullable } from "@types";
+import { FetchError, isNullish, Nullable } from "@types";
 import { ApiSuffix } from "@constants";
 import { AxiosResponse } from "axios";
 import {
@@ -19,9 +19,9 @@ const VerifyAuthCode = (): React.ReactElement => {
   const [remainedTime, setRemainedTime] = useState(remainMillisecond);
   const [authCode, setAuthCode] = useState("");
   const [confirmToken, setConfirmToken] = useState<Nullable<string>>();
-  const { mutateAsync, isError } = useMutation<
+  const { mutateAsync, error } = useMutation<
     AxiosResponse<AuthCodeVerificationResponse>,
-    unknown,
+    FetchError,
     AuthCodeVerificationRequest
   >((authValidationInfo) =>
     fetcher.post(ApiSuffix.VALIDATE_AUTH_CODE, authValidationInfo)
@@ -73,7 +73,7 @@ const VerifyAuthCode = (): React.ReactElement => {
         <input onChange={handleChangeAuthCode} type="text" required />
         <button>다음</button>
       </form>
-      {isError && <p>인증 코드 검증에 실패했습니다.</p>}
+      {error && <p>{error.message}</p>}
     </>
   );
 };

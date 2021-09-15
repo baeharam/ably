@@ -3,16 +3,18 @@ import { useQuery } from "react-query";
 import { useHistory } from "react-router-dom";
 import { ApiSuffix } from "@constants";
 import { fetcher } from "@utils/request";
+import { AxiosResponse } from "axios";
+import { IssueAuthCodeResponse } from "./types";
+import { FetchError } from "@types";
 
 const IssueAuthCode = (): React.ReactElement => {
   const [email, setEmail] = useState("");
-  const { data, error, refetch } = useQuery(
-    "authInfo",
-    () => fetcher.get(`${ApiSuffix.ISSUE_AUTH_CODE}${email}`),
-    {
-      enabled: false,
-    }
-  );
+  const { data, error, refetch } = useQuery<
+    AxiosResponse<IssueAuthCodeResponse>,
+    FetchError
+  >("authInfo", () => fetcher.get(`${ApiSuffix.ISSUE_AUTH_CODE}${email}`), {
+    enabled: false,
+  });
   const history = useHistory();
 
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>): void => {
@@ -42,7 +44,7 @@ const IssueAuthCode = (): React.ReactElement => {
         <input onChange={handleChangeEmail} type="email" required />
         <button>다음</button>
       </form>
-      {error && <p>인증 코드 발급 요청이 실패했습니다!</p>}
+      {error && <p>{error.message}</p>}
     </>
   );
 };
