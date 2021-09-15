@@ -19,7 +19,7 @@ specifiers:
   react-query: ^3.23.2
   react-router-dom: ^5.3.0
   react-scripts: 4.0.3
-  swr: ^1.0.1
+  sass: ^1.41.0
   typescript: ^4.1.2
   web-vitals: ^1.0.1
 
@@ -38,8 +38,8 @@ dependencies:
   react-dom: 17.0.2_react@17.0.2
   react-query: 3.23.2_react-dom@17.0.2+react@17.0.2
   react-router-dom: 5.3.0_react@17.0.2
-  react-scripts: 4.0.3_react@17.0.2+typescript@4.4.3
-  swr: 1.0.1_react@17.0.2
+  react-scripts: 4.0.3_c44fe06c572325fb9bdbbef60255f5ad
+  sass: 1.41.0
   typescript: 4.4.3
   web-vitals: 1.1.2
 
@@ -1553,7 +1553,7 @@ packages:
     dependencies:
       cross-spawn: 7.0.3
       lodash: 4.17.21
-      react-scripts: 4.0.3_react@17.0.2+typescript@4.4.3
+      react-scripts: 4.0.3_c44fe06c572325fb9bdbbef60255f5ad
       semver: 7.3.5
       webpack-merge: 4.2.2
     dev: false
@@ -3293,7 +3293,6 @@ packages:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
     engines: {node: '>=8'}
     dev: false
-    optional: true
 
   /bindings/1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
@@ -3720,7 +3719,6 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: false
-    optional: true
 
   /chownr/1.1.4:
     resolution: {integrity: sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==}
@@ -4523,11 +4521,6 @@ packages:
   /depd/1.1.2:
     resolution: {integrity: sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=}
     engines: {node: '>= 0.6'}
-    dev: false
-
-  /dequal/2.0.2:
-    resolution: {integrity: sha512-q9K8BlJVxK7hQYqa6XISGmBZbtQQWVXSrRrWreHC94rMt1QL/Impruc+7p2CYSYuVIUr+YCt6hjrs1kkdJRTug==}
-    engines: {node: '>=6'}
     dev: false
 
   /des.js/1.0.1:
@@ -6384,7 +6377,6 @@ packages:
     dependencies:
       binary-extensions: 2.2.0
     dev: false
-    optional: true
 
   /is-boolean-object/1.1.2:
     resolution: {integrity: sha512-gDYaKHJmnj4aWxyj6YHyXVpdQawtVLHU5cb+eztPGczf6cjuTdwve5ZIEfgXqH4e57An1D1AKf8CZ3kYrQRqYA==}
@@ -9642,7 +9634,7 @@ packages:
       tiny-warning: 1.0.3
     dev: false
 
-  /react-scripts/4.0.3_react@17.0.2+typescript@4.4.3:
+  /react-scripts/4.0.3_c44fe06c572325fb9bdbbef60255f5ad:
     resolution: {integrity: sha512-S5eO4vjUzUisvkIPB7jVsKtuH2HhWcASREYWHAQ1FP5HyCv3xgn+wpILAEWkmy+A+tTNbSZClhxjT3qz6g4L1A==}
     engines: {node: ^10.12.0 || >=12.0.0}
     hasBin: true
@@ -9702,7 +9694,7 @@ packages:
       react-refresh: 0.8.3
       resolve: 1.18.1
       resolve-url-loader: 3.1.4
-      sass-loader: 10.2.0_webpack@4.44.2
+      sass-loader: 10.2.0_sass@1.41.0+webpack@4.44.2
       semver: 7.3.2
       style-loader: 1.3.0_webpack@4.44.2
       terser-webpack-plugin: 4.2.3_webpack@4.44.2
@@ -9813,7 +9805,6 @@ packages:
     dependencies:
       picomatch: 2.3.0
     dev: false
-    optional: true
 
   /recursive-readdir/2.2.2:
     resolution: {integrity: sha512-nRCcW9Sj7NuZwa2XvH9co8NPeXUBhZP7CRKJtU+cS6PW9FpCIFoI5ib0NT1ZrbNuPoRy0ylyCaUL8Gih4LSyFg==}
@@ -10181,7 +10172,7 @@ packages:
     resolution: {integrity: sha512-vTxrZz4dX5W86M6oVWVdOVe72ZiPs41Oi7Z6Km4W5Turyz28mrXSJhhEBZoRtzJWIv3833WKVwLSDWWkEfupMg==}
     dev: false
 
-  /sass-loader/10.2.0_webpack@4.44.2:
+  /sass-loader/10.2.0_sass@1.41.0+webpack@4.44.2:
     resolution: {integrity: sha512-kUceLzC1gIHz0zNJPpqRsJyisWatGYNFRmv2CKZK2/ngMJgLqxTbXwe/hJ85luyvZkgqU3VlJ33UVF2T/0g6mw==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -10200,9 +10191,18 @@ packages:
       klona: 2.0.4
       loader-utils: 2.0.0
       neo-async: 2.6.2
+      sass: 1.41.0
       schema-utils: 3.1.1
       semver: 7.3.2
       webpack: 4.44.2
+    dev: false
+
+  /sass/1.41.0:
+    resolution: {integrity: sha512-wb8nT60cjo9ZZMcHzG7TzdbFtCAmHEKWrH+zAdScPb4ZxL64WQBnGdbp5nwlenW5wJPcHva1JWmVa0h6iqA5eg==}
+    engines: {node: '>=8.9.0'}
+    hasBin: true
+    dependencies:
+      chokidar: 3.5.2
     dev: false
 
   /sax/1.2.4:
@@ -10902,15 +10902,6 @@ packages:
       stable: 0.1.8
       unquote: 1.1.1
       util.promisify: 1.0.1
-    dev: false
-
-  /swr/1.0.1_react@17.0.2:
-    resolution: {integrity: sha512-EPQAxSjoD4IaM49rpRHK0q+/NzcwoT8c0/Ylu/u3/6mFj/CWnQVjNJ0MV2Iuw/U+EJSd2TX5czdAwKPYZIG0YA==}
-    peerDependencies:
-      react: ^16.11.0 || ^17.0.0
-    dependencies:
-      dequal: 2.0.2
-      react: 17.0.2
     dev: false
 
   /symbol-tree/3.2.4:
