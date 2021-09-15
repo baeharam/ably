@@ -52,6 +52,7 @@ const Login = (): React.ReactElement => {
       <h1>로그인</h1>
       <form className={style["login-form"]} onSubmit={handleSubmit}>
         <input
+          data-testid="아이디"
           className={style["login-form__input"]}
           onChange={handleChangeEmail}
           type="text"
@@ -59,15 +60,22 @@ const Login = (): React.ReactElement => {
           required
         />
         <input
+          data-testid="비밀번호"
           className={style["login-form__input"]}
           onChange={handleChangePassword}
           type="password"
           placeholder="비밀번호"
           required
         />
-        <button className={style["login-form__button"]}>로그인</button>
+        <button data-testid="로그인" className={style["login-form__button"]}>
+          로그인
+        </button>
       </form>
-      <button className={style["password-reset-button"]} type="button">
+      <button
+        data-testid="비밀번호 재설정"
+        className={style["password-reset-button"]}
+        type="button"
+      >
         <Link to="/reset-password">비밀번호 재설정</Link>
       </button>
       {error && <p>{error.message}</p>}

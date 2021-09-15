@@ -70,8 +70,13 @@ const VerifyAuthCode = (): React.ReactElement => {
       <h1>인증 코드 검증</h1>
       <p>남은시간: {dayjs(remainedTime).format("mm:ss")}</p>
       <form onSubmit={handleSubmit}>
-        <input onChange={handleChangeAuthCode} type="text" required />
-        <button>다음</button>
+        <input
+          data-testid="인증 코드"
+          onChange={handleChangeAuthCode}
+          type="text"
+          required
+        />
+        <button data-testid="다음">다음</button>
       </form>
       {error && <p>{error.message}</p>}
     </>

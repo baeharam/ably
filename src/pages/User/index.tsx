@@ -57,11 +57,25 @@ const User = (): React.ReactElement => {
   return (
     <>
       <div className={style.user}>
-        <div className={style.card}>{name}</div>
-        <div className={style.card}>{email}</div>
-        <img className={style.card} src={profileImage} alt="프로필 이미지" />
+        <div data-testid="이름" className={style.card}>
+          {name}
+        </div>
+        <div data-testid="이메일" className={style.card}>
+          {email}
+        </div>
+        <img
+          data-testid="프로필"
+          className={style.card}
+          src={profileImage}
+          alt="프로필 이미지"
+        />
       </div>
-      <button onClick={handleLogout} className={style.logout} type="button">
+      <button
+        data-testid="로그아웃"
+        onClick={handleLogout}
+        className={style.logout}
+        type="button"
+      >
         로그아웃
       </button>
       {logoutError && <p>{logoutError.message}</p>}

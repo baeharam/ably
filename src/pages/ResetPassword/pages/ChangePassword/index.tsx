@@ -59,17 +59,21 @@ const ChangePassword = (): React.ReactElement => {
           onChange={handleChangeNewPassword}
           type="password"
           placeholder="새로운 비밀번호"
+          data-testid="새로운 비밀번호"
           required
         />
         <input
           onChange={handleChangeNewPasswordConfirm}
           type="password"
           placeholder="새로운 비밀번호 확인"
+          data-testid="새로운 비밀번호 확인"
           required
         />
-        <button>비밀번호 변경하기</button>
+        <button data-testid="비밀번호 변경하기">비밀번호 변경하기</button>
       </form>
-      {isSuccess && <p>비밀번호 변경에 성공했습니다!</p>}
+      {isSuccess && (
+        <p data-testid="성공 메시지">비밀번호 변경에 성공했습니다!</p>
+      )}
       {isError && <p>비밀번호 변경에 실패했습니다!</p>}
     </>
   );

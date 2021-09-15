@@ -41,8 +41,13 @@ const IssueAuthCode = (): React.ReactElement => {
     <>
       <h1>인증 코드 발급 요청</h1>
       <form onSubmit={handleSubmit}>
-        <input onChange={handleChangeEmail} type="email" required />
-        <button>다음</button>
+        <input
+          data-testid="이메일"
+          onChange={handleChangeEmail}
+          type="email"
+          required
+        />
+        <button data-testid="다음">다음</button>
       </form>
       {error && <p>{error.message}</p>}
     </>
