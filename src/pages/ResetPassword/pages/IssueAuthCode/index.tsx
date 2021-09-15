@@ -5,7 +5,7 @@ import { ApiSuffix } from "@constants";
 import { fetcher } from "@utils/request";
 import { AxiosResponse } from "axios";
 import { IssueAuthCodeResponse } from "./types";
-import { FetchError } from "@types";
+import { FetchError, isNullish } from "@types";
 
 const IssueAuthCode = (): React.ReactElement => {
   const [email, setEmail] = useState("");
@@ -29,7 +29,7 @@ const IssueAuthCode = (): React.ReactElement => {
   };
 
   useEffect(() => {
-    if (data != null) {
+    if (!isNullish(data)) {
       history.push("./reset-password/verify-authcode", {
         ...data.data,
         email,

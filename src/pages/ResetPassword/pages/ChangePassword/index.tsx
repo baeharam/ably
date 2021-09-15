@@ -3,6 +3,7 @@ import { useMutation } from "react-query";
 import { useLocation } from "react-router-dom";
 import { fetcher } from "@utils/request";
 import { ApiSuffix } from "@constants";
+import { FetchError } from "@types";
 
 interface InfoToChangePassword {
   email: string;
@@ -21,9 +22,9 @@ const ChangePassword = (): React.ReactElement => {
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
 
-  const { mutate, isSuccess, isError } = useMutation<
+  const { mutate, isSuccess, error } = useMutation<
     unknown,
-    unknown,
+    FetchError,
     ChangePasswordRequest
   >((changePasswordRequest) =>
     fetcher.patch(ApiSuffix.CHANGE_PASSWORD, changePasswordRequest)
@@ -74,7 +75,7 @@ const ChangePassword = (): React.ReactElement => {
       {isSuccess && (
         <p data-testid="성공 메시지">비밀번호 변경에 성공했습니다!</p>
       )}
-      {isError && <p>비밀번호 변경에 실패했습니다!</p>}
+      {error && <p>{error.message}</p>}
     </>
   );
 };
