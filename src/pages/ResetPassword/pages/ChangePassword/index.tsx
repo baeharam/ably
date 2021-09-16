@@ -67,6 +67,9 @@ const ChangePassword = (): React.ReactElement => {
         <p data-testid="성공 메시지">비밀번호 변경에 성공했습니다!</p>
       )}
       {error && <p>{error.message}</p>}
+      {newPassword !== newPasswordConfirm && (
+        <p>비밀번호와 비밀번호 확인이 다릅니다.</p>
+      )}
     </>
   );
 };
