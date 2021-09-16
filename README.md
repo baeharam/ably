@@ -1,6 +1,8 @@
 ## 실행방법
 
-- 시연: `pnpm start`
+사전에 실행시키고자 하는 컴퓨터에 `pnpm` 이 설치되어 있어야 합니다. ([설치링크](https://pnpm.io/installation)) 이후 `git clone` 으로 프로젝트를 클론하신 뒤 `pnpm install` 을 통해서 패키지들을 설치하시면 됩니다. 아래는 이 과정들을 진행한 뒤에 실행가능한 스크립트 목록입니다.
+
+- 개발서버 실행 : `pnpm start`
 - 테스트 : `pnpm test`
 - 포맷팅 : `pnpm format`
 
@@ -15,13 +17,13 @@ A + B + C , E2E 테스트
 ## 페이지 구조
 
 - 비밀번호 재설정(/reset-password) (중첩 라우팅)
-  - 인증코드 발급 페이지(/reset-password/issue-authcode)
+  - 인증코드 발급 페이지(/reset-password)
   - 인증코드 검증 페이지(/reset-password/verify-authcode)
   - 비밀번호 변경 페이지(/reset-password/change-password)
 - 로그인 페이지(/login)
 - 회원정보 페이지(/user)
 
-괄호 안에 포함된 path 기준으로 테스트해보실 수 있습니다.
+괄호 안에 포함된 path 기준으로 테스트해보실 수 있습니다. 처음에 `pnpm start` 로 개발서버를 실행할 시에 제일 먼저 뜨는 페이지는 /reset-password 입니다. 홈 경로인 / 가 /reset-password 로 리다이렉션 됩니다.
 
 
 
