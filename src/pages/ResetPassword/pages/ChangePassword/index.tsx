@@ -4,16 +4,7 @@ import { useLocation } from "react-router-dom";
 import { fetcher } from "@utils/request";
 import { ApiSuffix } from "@constants";
 import { FetchError } from "@types";
-
-interface InfoToChangePassword {
-  email: string;
-  confirmToken: string;
-}
-
-interface ChangePasswordRequest extends InfoToChangePassword {
-  newPassword: string;
-  newPasswordConfirm: string;
-}
+import { ChangePasswordRequest, InfoToChangePassword } from "./types";
 
 const ChangePassword = (): React.ReactElement => {
   const { state } = useLocation<InfoToChangePassword>();
